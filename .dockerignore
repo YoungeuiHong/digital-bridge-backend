@@ -1,0 +1,21 @@
+# Ignore virtual environments
+venv/
+.env/
+
+# Ignore test and development files
+tests/
+*.log
+*.pot
+
+# Ignore IDE and editor specific files
+.idea/
+.vscode/
+*.swp
+
+# Ignore Dockerfile and .dockerignore
+Dockerfile
+.dockerignore
+
+# Ignore git files
+.git/
+.gitignore
