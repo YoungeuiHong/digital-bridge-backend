@@ -18,4 +18,5 @@ Dockerfile
 
 # Ignore git files
 .git/
+.github/
 .gitignore
