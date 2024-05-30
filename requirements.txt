@@ -1,0 +1,8 @@
+fastapi
+pydantic
+selenium
+python-dotenv
+google-cloud-documentai
+protobuf
+uvicorn
+korail2
