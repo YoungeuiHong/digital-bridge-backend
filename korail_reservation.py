@@ -12,11 +12,13 @@ KORAIL_PW = os.getenv("KORAIL_PW")
 PSGRS = [AdultPassenger(1)]
 TRAIN_TYPE = TrainType.KTX
 
+
 class Train(BaseModel):
     departure: str
     destination: str
     date: str
     time: str
+
 
 async def reserve_train(train: Train):
     k = Korail(KORAIL_ID, KORAIL_PW)
@@ -27,9 +29,19 @@ async def reserve_train(train: Train):
         notFound = True
         while notFound:
             try:
-                sys.stdout.write("Finding Seat %s ➜ %s              \r" % (train.departure, train.destination))
+                sys.stdout.write(
+                    "Finding Seat %s ➜ %s              \r"
+                    % (train.departure, train.destination)
+                )
                 sys.stdout.flush()
-                trains = k.search_train_allday(train.departure, train.destination, train.date, train.time, passengers=PSGRS, train_type=TRAIN_TYPE)
+                trains = k.search_train_allday(
+                    train.departure,
+                    train.destination,
+                    train.date,
+                    train.time,
+                    passengers=PSGRS,
+                    train_type=TRAIN_TYPE,
+                )
                 print(trains)
                 print("Found!!")
                 notFound = False

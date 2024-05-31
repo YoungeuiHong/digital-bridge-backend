@@ -5,8 +5,18 @@ from korail_reservation import reserve_train, Train
 from korail_payment import pay_train
 from card_ocr import process_document
 from korail_search import search_train
+from starlette.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+origins = ["localhost:3000", "digital-bridge.store"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 class Train(BaseModel):
     departure: str
@@ -14,17 +24,21 @@ class Train(BaseModel):
     date: str
     time: str
 
+
 @app.post("/search")
 async def search_train_endpoint(train: Train):
     return await search_train(train)
+
 
 @app.post("/reservation")
 async def reserve_train_endpoint(train: Train):
     return await reserve_train(train)
 
+
 @app.post("/pay")
 async def pay_train_endpoint():
     return await pay_train()
+
 
 @app.post("/extract_card_info")
 async def extract_card_info(file: UploadFile = File(...)):
