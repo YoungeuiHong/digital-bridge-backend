@@ -54,5 +54,12 @@ jobs:
             --region=${{ secrets.GCP_REGION }} \
             --platform=managed \
             --allow-unauthenticated \
-            --set-env-vars "PORT=8080,KORAIL_ID=${{ secrets.KORAIL_ID }},KORAIL_PW=${{ secrets.KORAIL_PW }},CARD_PASSWORD=${{ secrets.CARD_PASSWORD }},AUTH_NUMBER=${{ secrets.AUTH_NUMBER }},GOOGLE_CLOUD_PROJECT_ID=${{ secrets.GOOGLE_CLOUD_PROJECT_ID }},GOOGLE_CLOUD_LOCATION=${{ secrets.GOOGLE_CLOUD_LOCATION }},GOOGLE_CLOUD_PROCESSOR_ID=${{ secrets.GOOGLE_CLOUD_PROCESSOR_ID }},GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}"
-            
+            --set-env-vars PORT=8080 \
+            --set-env-vars KORAIL_ID=${{ secrets.KORAIL_ID }} \
+            --set-env-vars KORAIL_PW==${{ secrets.KORAIL_PW }} \
+            --set-env-vars CARD_PASSWORD=${{ secrets.CARD_PASSWORD }} \
+            --set-env-vars AUTH_NUMBER=${{ secrets.AUTH_NUMBER }} \
+            --set-env-vars GOOGLE_CLOUD_PROJECT_ID=${{ secrets.GOOGLE_CLOUD_PROJECT_ID }} \
+            --set-env-vars GOOGLE_CLOUD_LOCATION=${{ secrets.GOOGLE_CLOUD_LOCATION }} \
+            --set-env-vars GOOGLE_CLOUD_PROCESSOR_ID=${{ secrets.GOOGLE_CLOUD_PROCESSOR_ID }} \
+            --set-env-vars GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
