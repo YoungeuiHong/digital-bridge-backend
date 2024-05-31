@@ -10,8 +10,8 @@ LOCATION = os.getenv("GOOGLE_CLOUD_LOCATION")
 PROCESSOR_ID = os.getenv("GOOGLE_CLOUD_PROCESSOR_ID")
 
 def process_document(content: bytes):
-    credentials_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credentials_path
+    credentials_path = os.getenv("DOCUMENT_AI_CREDENTIALS")
+    os.environ["DOCUMENT_AI_CREDENTIALS"] = credentials_path
 
     client = documentai.DocumentProcessorServiceClient()
     name = f'projects/{PROJECT_ID}/locations/{LOCATION}/processors/{PROCESSOR_ID}'
