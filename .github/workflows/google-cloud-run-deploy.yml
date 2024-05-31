@@ -55,7 +55,7 @@ jobs:
             --platform=managed \
             --allow-unauthenticated \
             --set-env-vars KORAIL_ID=${{ secrets.KORAIL_ID }} \
-            --set-env-vars KORAIL_PW==${{ secrets.KORAIL_PW }} \
+            --set-env-vars KORAIL_PW=${{ secrets.KORAIL_PW }} \
             --set-env-vars CARD_PASSWORD=${{ secrets.CARD_PASSWORD }} \
             --set-env-vars AUTH_NUMBER=${{ secrets.AUTH_NUMBER }} \
             --set-env-vars GOOGLE_CLOUD_PROJECT_ID=${{ secrets.GOOGLE_CLOUD_PROJECT_ID }} \
