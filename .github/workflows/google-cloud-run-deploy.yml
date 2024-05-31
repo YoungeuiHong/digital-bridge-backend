@@ -54,7 +54,8 @@ jobs:
             --region=${{ secrets.GCP_REGION }} \
             --platform=managed \
             --allow-unauthenticated
-            --set-env-vars KORAIL_ID = ${{ secrets.GCP_REGION }},
+            --set-env-vars PORT=8080
+                            KORAIL_ID = ${{ secrets.GCP_REGION }},
                             KORAIL_PW = ${{ secrets.KORAIL_PW }},
                             CARD_PASSWORD=${{ secrets.CARD_PASSWORD }},
                             AUTH_NUMBER=${{ secrets.AUTH_NUMBER }},
