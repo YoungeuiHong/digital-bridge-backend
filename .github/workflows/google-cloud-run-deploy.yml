@@ -53,14 +53,6 @@ jobs:
             --image=${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_REGISTRY_NAME }}/${{ secrets.DOCKER_IMAGE_NAME }}:${{ github.sha }} \
             --region=${{ secrets.GCP_REGION }} \
             --platform=managed \
-            --allow-unauthenticated
-            --set-env-vars PORT=8080
-                            KORAIL_ID = ${{ secrets.GCP_REGION }},
-                            KORAIL_PW = ${{ secrets.KORAIL_PW }},
-                            CARD_PASSWORD=${{ secrets.CARD_PASSWORD }},
-                            AUTH_NUMBER=${{ secrets.AUTH_NUMBER }},
-                            GOOGLE_CLOUD_PROJECT_ID = ${{ secrets.GOOGLE_CLOUD_PROJECT_ID }},
-                            GOOGLE_CLOUD_LOCATION = ${{ secrets.GOOGLE_CLOUD_LOCATION }},
-                            GOOGLE_CLOUD_PROCESSOR_ID = ${{ secrets.GOOGLE_CLOUD_PROCESSOR_ID }},
-                            GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }},
+            --allow-unauthenticated \
+            --set-env-vars "PORT=8080,KORAIL_ID=${{ secrets.KORAIL_ID }},KORAIL_PW=${{ secrets.KORAIL_PW }},CARD_PASSWORD=${{ secrets.CARD_PASSWORD }},AUTH_NUMBER=${{ secrets.AUTH_NUMBER }},GOOGLE_CLOUD_PROJECT_ID=${{ secrets.GOOGLE_CLOUD_PROJECT_ID }},GOOGLE_CLOUD_LOCATION=${{ secrets.GOOGLE_CLOUD_LOCATION }},GOOGLE_CLOUD_PROCESSOR_ID=${{ secrets.GOOGLE_CLOUD_PROCESSOR_ID }},GOOGLE_APPLICATION_CREDENTIALS=${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}"
             
