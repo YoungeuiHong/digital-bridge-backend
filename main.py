@@ -34,7 +34,3 @@ async def extract_card_info(file: UploadFile = File(...)):
         return card_info
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": str(e)})
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
