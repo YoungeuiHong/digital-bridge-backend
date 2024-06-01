@@ -24,6 +24,11 @@ class Train(BaseModel):
     date: str
     time: str
 
+class Card(BaseModel):
+    card_number: str
+    expiration_year: str
+    expiration_month: str
+    cvc: str
 
 @app.post("/search")
 async def search_train_endpoint(train: Train):
@@ -36,8 +41,8 @@ async def reserve_train_endpoint(train: Train):
 
 
 @app.post("/pay")
-async def pay_train_endpoint():
-    return await pay_train()
+async def pay_train_endpoint(cardInfo: Card):
+    return await pay_train(cardInfo)
 
 
 @app.post("/extract_card_info")

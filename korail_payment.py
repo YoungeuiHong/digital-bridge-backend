@@ -8,14 +8,19 @@ from selenium.webdriver.support.ui import Select
 import threading
 import os
 from dotenv import load_dotenv
+from pydantic import BaseModel
 
 load_dotenv()
 
+class Card(BaseModel):
+    card_number: str
+    expiration_year: str
+    expiration_month: str
+    cvc: str
+
+
 KORAIL_ID = os.getenv("KORAIL_ID")
 KORAIL_PW = os.getenv("KORAIL_PW")
-CARD_NUMBER = os.getenv("CARD_NUMBER")
-EXP_MONTH = os.getenv("EXP_MONTH")
-EXP_YEAR = os.getenv("EXP_YEAR")
 CARD_PASSWORD = os.getenv("CARD_PASSWORD")
 AUTH_NUMBER = os.getenv("AUTH_NUMBER")
 
@@ -114,7 +119,7 @@ def finalize_payment(driver):
     pay_button.click()
 
 
-async def pay_train():
+async def pay_train(cardInfo: Card):
     alert_thread = threading.Thread(target=handle_alerts, args=(driver,))
     alert_thread.daemon = True
     alert_thread.start()
@@ -123,7 +128,7 @@ async def pay_train():
     navigate_to_reservation_page(driver)
     click_payment_button(driver)
     enter_card_details(
-        driver, CARD_NUMBER, EXP_MONTH, EXP_YEAR, CARD_PASSWORD, AUTH_NUMBER
+        driver, cardInfo.card_number, cardInfo.expiration_month, cardInfo.expiration_year, CARD_PASSWORD, AUTH_NUMBER
     )
     agree_and_issue_ticket(driver)
     finalize_payment(driver)
