@@ -8,7 +8,7 @@ from korail_search import search_train
 from starlette.middleware.cors import CORSMiddleware
 
 app = FastAPI()
-origins = ["localhost:3000", "digital-bridge.store"]
+origins = ["http://localhost:3000", "https://digital-bridge.store"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
