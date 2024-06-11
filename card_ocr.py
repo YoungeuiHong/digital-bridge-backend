@@ -11,10 +11,12 @@ PROCESSOR_ID = os.getenv("GOOGLE_CLOUD_PROCESSOR_ID")
 
 
 def process_document(content: bytes):
-    # credentials_path = os.getenv("DOCUMENT_AI_CREDENTIALS")
-    # os.environ["DOCUMENT_AI_CREDENTIALS"] = credentials_path
+    # Load environment variables
+    service_account_file = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
 
-    client = documentai.DocumentProcessorServiceClient()
+    # Initialize Google Document AI client
+    client = documentai.DocumentProcessorServiceClient.from_service_account_json(service_account_file)
+
     name = f"projects/{PROJECT_ID}/locations/{LOCATION}/processors/{PROCESSOR_ID}"
 
     document = documentai.types.RawDocument(content=content, mime_type="image/jpeg")
